@@ -1,0 +1,1 @@
+{"/Users/timmaddux/workspace/Capstone-Find-Your-Voice/lib/gulpfile.js":{"sha1":"d25b737089e1b7cd3f5e40c9d1f36be638bc56bf","tasks":{"default":{"name":"default","dependencies":"watch lint sassify"},"watch":{"name":"watch","dependencies":""},"lint":{"name":"lint","dependencies":""},"sassify":{"name":"sassify","dependencies":""}}}}
