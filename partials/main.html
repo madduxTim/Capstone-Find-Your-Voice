@@ -1,6 +1,22 @@
 <!-- PAIRS WITH LANDSEARCHCTRL.JS -->
-<div class="container">
-    <input id="apiCall" type="text" name="" placeholder="Search for Keywords">
-    <button class="btn" name="action" ng-click="searchCall()">Search</button>
-</div>
-    
+<!-- <div class="container"> -->
+    <div class="row">
+        <div id="searchColumn" class="col s12 m4 l3">
+            <div class="switch">
+                <label>
+                City
+                <input type="checkbox">
+                <span class="lever"></span>
+                State
+                </label>
+            </div>
+            <input id="stateSelect" type="text" placeholder="TN only for now...">
+            <input id="apiCall" type="text" name="" placeholder="Search for Keywords">
+            <button class="btn" name="action" ng-click="searchCall()">Search</button>
+        </div>
+
+        <div id="searchResults" class="col s12 m8 l9">
+            <div ng-include="'./partials/search-results-cards.html'"></div>
+        </div>
+    </div>
+<!-- </div> -->

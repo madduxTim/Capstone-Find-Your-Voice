@@ -1,5 +1,17 @@
 $sassTest: lightgrey;
+$neatoColor1: #bbdefb; 
+$neatoColor2: #e3f2fd;
 
 body {
-    background-color: $sassTest;
+    background-color: $neatoColor2;
+}
+
+#searchColumn {
+    padding: 2%;
+}
+
+#searchResults {
+    background-color: $neatoColor1;
+    min-height: 400px;
+    margin-top: 2%;
 }

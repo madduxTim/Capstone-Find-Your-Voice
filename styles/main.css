@@ -1,2 +1,10 @@
 body {
-  background-color: lightgrey; }
+  background-color: #e3f2fd; }
+
+#searchColumn {
+  padding: 2%; }
+
+#searchResults {
+  background-color: #bbdefb;
+  min-height: 400px;
+  margin-top: 2%; }

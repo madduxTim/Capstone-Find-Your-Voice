@@ -1,12 +1,12 @@
 "use strict";
 // PAIRS WITH MAIN.HTML AND LANDINGSEARCHCTRL.JS
 
-app.factory("searchFactory", function($q, $http){
+app.factory("searchFactory", function($q, $http, $document){
     var keywordCallStorage = function() {
         var queryStorage = [];
-        var searchTerms = $("#apiCall").val();      
+        var searchTerms = $document.find("#apiCall").val();      
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=sd&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+            $http.get(`http://openstates.org/api/v1/bills/?&state=tn&q=${searchTerms}&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
                 .success(function(queryData){
                     var preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
@@ -20,6 +20,7 @@ app.factory("searchFactory", function($q, $http){
                     }
                 })
                 .error(function(error){
+                    Materialize.toast(`${error}`, 3000, "rounded red");
                     reject(error);
                 });
 
