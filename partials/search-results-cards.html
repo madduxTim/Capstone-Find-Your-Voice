@@ -1,16 +1,20 @@
-<div class="card grey lighten-2" ng-repeat="bill in queryStorage">
-  <div class="card-content black-text">
-    <span class="card-title">
-      <a ng-href="http://www.capitol.tn.gov/Bills/109/Bill/{{bill.bill_id}}.pdf">{{bill.bill_id}}</a>
-    </span>
-    <button class="btn right light-blue"><i class="material-icons">email</i></button>
-    <button class="btn right light-blue"><i class="material-icons">delete</i></button>
-    <button class="btn right light-blue"><i class="material-icons">save</i></button>
-    <p>{{bill.title}}</p>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea class="materialize-textarea"></textarea>
-        <label>Your Notes / Communication</label>
+<!-- INCLUDED ON MAIN.HTML -->
+<!-- PAIRS WITH LANDINGSEARCHCTRL.JS -->
+<div id="searchResults" class="col s12 m8 l9">
+  <div class="card grey lighten-3" ng-repeat="bill in queryStorage">
+    <div class="card-content black-text">
+      <span class="card-title">
+        <a ng-click="hrefFix(bill.bill_id)">{{bill.bill_id}}</a>
+      </span>
+      <button class="btn right light-blue"><i class="material-icons">edit</i></button>
+      <button class="btn right light-blue"><i class="material-icons">delete</i></button>
+      <button class="btn right light-blue"><i class="material-icons">save</i></button>
+      <p>{{bill.title}}</p>
+      <div class="row" ng-hide>
+        <div class="input-field col s12">
+          <textarea class="materialize-textarea"></textarea>
+          <label>Your Notes / Communication</label>
+        </div>
       </div>
     </div>
   </div>
