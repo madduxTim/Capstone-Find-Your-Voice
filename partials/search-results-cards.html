@@ -4,7 +4,7 @@
   <div class="card grey lighten-3" ng-repeat="bill in queryStorage">
     <div class="card-content black-text">
       <span class="card-title">
-        <a ng-click="hrefFix(bill.bill_id)">{{bill.bill_id}}</a>
+        <a ng-click="hrefFix(bill.bill_id)">{{bill.state.toUpperCase()}} || {{bill.bill_id}}</a>
       </span>
       <button class="btn right light-blue"><i class="material-icons">edit</i></button>
       <button class="btn right light-blue"><i class="material-icons">delete</i></button>

@@ -4,9 +4,10 @@
 app.factory("searchFactory", function($q, $http, $document){
     var keywordCallStorage = function() {
         var queryStorage = [];
-        var searchTerms = $document.find("#apiCall").val();      
+        var searchTerms = $document.find("#apiCall").val();
+        var stateSelectValue = $document.find("#stateSelectDropdown").val();      
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1/bills/?&state=tn&q=${searchTerms}&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+            $http.get(`http://openstates.org/api/v1/bills/?&state=${stateSelectValue}&q=${searchTerms}&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
                 .success(function(queryData){
                     var preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
@@ -27,5 +28,9 @@ app.factory("searchFactory", function($q, $http, $document){
         });
     }
 
+    // ENABLES FUNCTIONALITY OF MATERIALIZE DROP DOWN SELECTS
+    $(document).ready(function() {
+        $('select').material_select();
+    });
     return {keywordCallStorage:keywordCallStorage};
 });
