@@ -3,6 +3,7 @@
 
 app.controller("LandingSearchCTRL", function($scope, $location, searchFactory) { // add in keywordCallStorage
     $scope.queryStorage = [];
+    $scope.singleBillStorage = [];
 
     $scope.searchCall = () => {
         searchFactory.keywordCallStorage()
@@ -12,10 +13,12 @@ app.controller("LandingSearchCTRL", function($scope, $location, searchFactory) {
         });
     };
 
-    $scope.hrefFix = (billId) => {
-        Materialize.toast(billId, 3000);
-        // location.replace(`http://www.capitol.tn.gov/Bills/109/Bill/${billId}.pdf`);
-        // need to make this link to open states bill page 
-        
+    $scope.singleBillAPI = (bill) => {
+        searchFactory.billDetailAPI(bill)
+            .then(function(results){
+                $scope.singleBillStorage = results;
+                console.log($scope.singleBillStorage);
+        });
     };
+
 });

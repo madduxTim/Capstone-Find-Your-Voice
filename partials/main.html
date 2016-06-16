@@ -11,7 +11,16 @@
             </label>
         </div>
 
-        <div class="input-field">
+        <input id="allBillsAPICall" type="text" name="" placeholder="Search for Keywords">
+        <button class="btn blue lighten-1" name="action" ng-click="searchCall()">Search</button>
+    </div>
+    
+    <div ng-include="'./partials/search-results-cards.html'"></div>
+</div>
+
+
+<!-- MAYBE VERSION 2.0 -->
+        <!-- <div class="input-field">
             <select multiple id="stateSelectDropdown">
                 <option value="" disabled selected>Select a state or states</option>
                 <option value="AL">Alabama</option>
@@ -67,11 +76,4 @@
                 <option value="WY">Wyoming</option>
                 </option>
             </select>
-        </div>
-
-        <input id="apiCall" type="text" name="" placeholder="Search for Keywords">
-        <button class="btn" name="action" ng-click="searchCall()">Search</button>
-    </div>
-    
-    <div ng-include="'./partials/search-results-cards.html'"></div>
-</div>
+        </div> -->

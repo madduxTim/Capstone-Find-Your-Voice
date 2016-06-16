@@ -1,13 +1,15 @@
 "use strict";
 // PAIRS WITH MAIN.HTML AND LANDINGSEARCHCTRL.JS
 
+// THIS IS THE FIRST API CALL BASED ON KEYWORDS 
 app.factory("searchFactory", function($q, $http, $document){
+
+    // FIRST, ALL BILLS API CALL BASED ON KEYWORDS 
     var keywordCallStorage = function() {
         var queryStorage = [];
-        var searchTerms = $document.find("#apiCall").val();
-        var stateSelectValue = $document.find("#stateSelectDropdown").val();      
+        var searchTerms = $document.find("#allBillsAPICall").val();
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1/bills/?&state=${stateSelectValue}&q=${searchTerms}&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A109&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
                 .success(function(queryData){
                     var preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
@@ -28,9 +30,21 @@ app.factory("searchFactory", function($q, $http, $document){
         });
     }
 
-    // ENABLES FUNCTIONALITY OF MATERIALIZE DROP DOWN SELECTS
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-    return {keywordCallStorage:keywordCallStorage};
+    // INDIVIDUAL BILLS ARE PASSED IN TO SECOND API CALL FOR BILL DETAIL
+    var billDetailAPI = function(bill) {
+        var singleBillStorage = [];
+        return $q(function(resolve, reject){
+            $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+                .success(function(queryData){
+                    // resolve(singleBillStorage);
+                    resolve(queryData);
+                    // singleBillStorage.push(queryData);
+                })
+                .error(function(error){
+                    reject(error);
+                });
+        });
+    }
+
+    return {keywordCallStorage:keywordCallStorage, billDetailAPI:billDetailAPI};
 });
