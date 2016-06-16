@@ -6,11 +6,11 @@ app.config(function($routeProvider){
     $routeProvider.
         when("/", {
             templateUrl: "partials/main.html",
-            controller: "LandingSearchCTRL"
+            controller: "SearchCTRL"
         }).
         when("/main", {
             templateUrl: "partials/main.html",
-            controller: "LandingSearchCTRL"
+            controller: "SearchCTRL"
         }).
         when("/login", {
             templateUrl: "partials/login.html",
@@ -18,10 +18,3 @@ app.config(function($routeProvider){
         }).
         otherwise("/");
 });
-
-
-  // $(document).ready(function(){
-  //   $('.collapsible').collapsible({
-  //     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-  //   });
-  // });

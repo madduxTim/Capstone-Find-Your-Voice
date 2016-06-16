@@ -1,5 +1,5 @@
 "use strict";
-// PAIRS WITH MAIN.HTML AND LANDINGSEARCHCTRL.JS
+// PAIRS WITH MAIN.HTML AND SearchCTRL.JS
 
 // THIS IS THE FIRST API CALL BASED ON KEYWORDS 
 app.factory("searchFactory", function($q, $http, $document){
