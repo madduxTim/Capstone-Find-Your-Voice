@@ -24,6 +24,42 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         });
     };
 
-    return {postBill:postBill};
+    var retrieveSavedBills = () => {
+        let savedBillsArray = [];
+        let user = AuthFactory.getUser();
+        return $q(function(resolve, reject){
+            $http
+                .get(firebaseURL + "saved-bills.json")
+                .success(function(savedBillObj){
+                    var preKeyBills = savedBillObj;
+                    Object.keys(preKeyBills).forEach(function(key){
+                        preKeyBills[key].id=key;
+                        savedBillsArray.push(preKeyBills[key]);
+                    });
+                    resolve(savedBillsArray);
+                })
+                .error(function(error){
+                    reject(error);
+                });
+        });
+        console.log(savedBillsArray);
+    }
+
+
+
+    // var removeBill = (billId) => {
+    //     return q$(function(resolve, reject){
+    //         $http
+    //             .delete(firebaseURL+`saved-bills/${billId}.json`)
+    //             .success(function(objectFromFirebase){
+    //                 resolve(objectFromFirebase);
+    //             })
+    //             .error(function(error){
+    //                 reject(error);
+    //             });
+    //     });
+    // };
+
+    return {postBill:postBill, retrieveSavedBills:retrieveSavedBills};
 
 });

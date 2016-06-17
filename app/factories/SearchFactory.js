@@ -5,19 +5,19 @@
 app.factory("searchFactory", function($q, $http, $document){
 
     // FIRST, ALL BILLS API CALL BASED ON KEYWORDS 
-    var keywordCallStorage = function() {
-        var queryStorage = [];
-        var searchTerms = $document.find("#allBillsAPICall").val();
+    let keywordCallStorage = function() {
+        let keywordCallArray = [];
+        let searchTerms = $document.find("#allBillsAPICall").val();
         return $q(function(resolve, reject){
             $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A109&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
                 .success(function(queryData){
-                    var preKeyData = queryData;
+                    let preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
                         preKeyData[key].id=key;
-                        queryStorage.push(preKeyData[key]);
-                    });
-                    if (queryStorage.length !== 0) {
-                    resolve(queryStorage);
+                        keywordCallArray.push(preKeyData[key]);
+                    })
+                    if (keywordCallArray.length !== 0) {
+                    resolve(keywordCallArray);
                     } else {
                         Materialize.toast("No bills found. Search again.", 3000, "rounded")
                     }
@@ -28,23 +28,27 @@ app.factory("searchFactory", function($q, $http, $document){
                 });
 
         });
-    }
+    };
 
     // INDIVIDUAL BILLS ARE PASSED IN TO SECOND API CALL FOR BILL DETAIL
-    var billDetailAPI = function(bill) {
-        var singleBillStorage = [];
+    let billDetailAPI = function(bill) {
+        let singleBillStorage = [];
         return $q(function(resolve, reject){
             $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
-                .success(function(queryData){
-                    // resolve(singleBillStorage);
-                    resolve(queryData);
-                    // singleBillStorage.push(queryData);
+                .success(function(queryData2){
+                    // let preKeyData2 = queryData2;
+                    // Object.keys(preKeyData2).forEach(function(key){
+                    //     preKeyData2[key].id=key;
+                    //     singleBillStorage.push(preKeyData2[key]);
+                    // })
+                    singleBillStorage = queryData2;
+                    resolve(singleBillStorage);
                 })
                 .error(function(error){
                     reject(error);
                 });
         });
-    }
+    };
 
     return {keywordCallStorage:keywordCallStorage, billDetailAPI:billDetailAPI};
 });

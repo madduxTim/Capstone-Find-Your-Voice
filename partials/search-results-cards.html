@@ -11,7 +11,7 @@
       <span class="card-title grey-text text-darken-4">{{singleBillStorage.bill_id}} || {{singleBillStorage.sponsors[0].name}}
         <button class="btn right light-blue"><i class="material-icons">close</i></button>
         <button class="btn right light-blue"><i class="material-icons">edit</i></button>
-        <button class="btn right light-blue"><i class="material-icons">delete</i></button>
+        <button ng-click="removeBill(singleBillStorage.bill_id)" class="btn right light-blue"><i class="material-icons">delete</i></button>
         <button ng-click="saveBill(singleBillStorage)" class="btn right light-blue"><i class="material-icons">save</i></button>
       </span>
       <p>{{singleBillStorage.title}}</p>
