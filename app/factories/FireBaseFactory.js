@@ -25,41 +25,45 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     };
 
     var retrieveSavedBills = () => {
-        let savedBillsArray = [];
+        let makesADiff = [];
         let user = AuthFactory.getUser();
+        // console.log(user.uid);
         return $q(function(resolve, reject){
             $http
-                .get(firebaseURL + "saved-bills.json")
+                // .get(`${firebaseURL}saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
+                .get(`${firebaseURL}saved-bills.json`) // THIS WORKS, BUT NOT LINE ABOVE
                 .success(function(savedBillObj){
                     var preKeyBills = savedBillObj;
                     Object.keys(preKeyBills).forEach(function(key){
                         preKeyBills[key].id=key;
-                        savedBillsArray.push(preKeyBills[key]);
+                        makesADiff.push(preKeyBills[key]);
                     });
-                    resolve(savedBillsArray);
+                    resolve(makesADiff);
                 })
                 .error(function(error){
                     reject(error);
                 });
         });
-        console.log(savedBillsArray);
+        console.log(makesADiff);
     }
 
+    var deleteBillFromFB = (billToKill) => {
+        // return console.log(billToKill);
+        return q$(function(resolve, reject){
+            $http
+                // .delete(firebaseURL+`saved-bills/${billToKill}.json`)
+                .delete("https://find-your-voice.firebaseio.com/saved-bills/-KKVIbwsVo0CB4Txs4gT")
+                .success(function(returnsFromFB){
+                    resolve(returnsFromFB);
+                })
+                .error(function(error){
+                    reject(error);
+                });
+        });
+    };
 
-
-    // var removeBill = (billId) => {
-    //     return q$(function(resolve, reject){
-    //         $http
-    //             .delete(firebaseURL+`saved-bills/${billId}.json`)
-    //             .success(function(objectFromFirebase){
-    //                 resolve(objectFromFirebase);
-    //             })
-    //             .error(function(error){
-    //                 reject(error);
-    //             });
-    //     });
-    // };
-
-    return {postBill:postBill, retrieveSavedBills:retrieveSavedBills};
+    return {postBill:postBill, 
+            retrieveSavedBills:retrieveSavedBills, 
+            deleteBillFromFB:deleteBillFromFB};
 
 });

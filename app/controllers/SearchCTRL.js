@@ -8,14 +8,13 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
 
     fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
         $scope.savedBillsArray = recalledBills;
-        console.log(recalledBills);
         console.log($scope.savedBillsArray);
     });
 
     $scope.searchCall = () => {
         searchFactory.keywordCallStorage()
             .then(function(results){
-                console.log(results);
+                // console.log(results);
                 $scope.queryStorage = results;
         });
     };
@@ -24,7 +23,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         searchFactory.billDetailAPI(bill)
             .then(function(results){
                 $scope.singleBillStorage = results;
-                console.log($scope.singleBillStorage);
+                // console.log($scope.singleBillStorage);
         });
     };
 
@@ -35,13 +34,15 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
             });
     };
 
-    $scope.removeBill = (billID) => {
-        Materialize.toast(`${billID} has been deleted!`, 3000, "rounded red");
-        fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
-            $scope.savedBillsArray = recalledBills;
-            console.log(recalledBills);
-            console.log($scope.savedBillsArray);
-        })
-    }
-
+    $scope.removeBill = (billNumber, billID) => {
+        fireBaseFactory.deleteBillFromFB(billID).then(function(response){
+            console.log(response);
+            fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
+                $scope.savedBillsArray = remainingBills;
+                console.log(remainingBills);
+                // Materialize.toast(`${billNumber} has been deleted!`, 3000, "rounded red");
+                // Materialize.toast(`${billID} has been deleted!`, 3000, "rounded red");
+            });
+        });
+    };
 });

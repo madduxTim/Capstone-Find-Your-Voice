@@ -35,14 +35,14 @@ app.factory("searchFactory", function($q, $http, $document){
         let singleBillStorage = [];
         return $q(function(resolve, reject){
             $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
-                .success(function(queryData2){
-                    // let preKeyData2 = queryData2;
-                    // Object.keys(preKeyData2).forEach(function(key){
-                    //     preKeyData2[key].id=key;
-                    //     singleBillStorage.push(preKeyData2[key]);
+                .success(function(queryData){
+                    // let preKeyData = queryData;
+                    // Object.keys(preKeyData).forEach(function(key){
+                    //     preKeyData[key].id=key;
+                    //     singleBillStorage.push(preKeyData[key]);
                     // })
-                    singleBillStorage = queryData2;
-                    resolve(singleBillStorage);
+                    // singleBillStorage = queryData;
+                    resolve(queryData);
                 })
                 .error(function(error){
                     reject(error);
