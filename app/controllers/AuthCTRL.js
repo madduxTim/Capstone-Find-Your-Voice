@@ -18,9 +18,9 @@ app.controller("AuthCTRL", function($scope, $rootScope, $location, firebaseURL, 
             password: $scope.account.password
         }, (error, userData) => {
             if(error){
-                console.log(`Error creating user: ${error}`);
+                Materialize.toast(`Error creating user: ${error}`, 3000, "rounded");
             } else{
-                console.log(`Created user account with uid: ${userData.uid}`);
+                Materialize.toast(`Created user account with uid: ${userData.uid}`, 3000, "rounded");
                 $scope.login();
             }
         });

@@ -26,7 +26,7 @@ app.factory("AuthFactory", function($http, firebaseURL) {
           if (error) {
             reject(error);
           } else {
-            console.log("authWithPassword method completed successfully");
+            // console.log("authWithPassword method completed successfully");
             currentUserData = authData;
             resolve(authData);
           }

@@ -1,20 +1,55 @@
 <!-- PAIRS WITH LANDSEARCHCTRL.JS -->
-<div class="row">
+ <div class="row">
     <div id="searchColumn" class="col s12 m4 l3">
         
-        <div class="switch">
+<!--         <div class="switch">
             <label>
             City
             <input type="checkbox">
             <span class="lever"></span>
             State
             </label>
-        </div>
+        </div> -->
 
+        <h5>Search TN Legislation</h5>
         <input id="allBillsAPICall" type="text" name="" placeholder="Search for Keywords">
         <button class="btn blue lighten-1" name="action" ng-click="searchCall()">Search</button>
-    </div>
+        <button class="btn blue lighten-1" name="action" ng-click="clearButton()">Clear</button>
+
+        <h5>Saved Bills</h5>
+        <ul class="collapsible popout" data-collapsible="accordion" ng-repeat="bill in savedBillsArray">
+            <li class=>
+                <div class="collapsible-header">
+                    {{bill.billNumber}}
+                    <i class="material-icons right" ng-click="removeBill(bill.id, bill.billNumber, $event)">delete</i>
+                </div>
+                <div class="collapsible-body"><p>{{bill.title}}</p></div>
+            </li>
+        </ul>
+
+        <!-- TO USE MODALS, I THINK I'M GOING TO HAVE TO MESS WITH ROUTING AGAIN, RIGHT? -->
+          <!-- Modal Trigger -->
+        <!--   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+         -->
+          <!-- Modal Structure -->
+        <!--   <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Modal Header</h4>
+              <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+          </div> -->
     
+        <!-- EXPERIMENTING WITH CHIPS -->
+         <!-- <div class="chip" ng-repeat="bill in savedBillsArray">
+            <i class="left material-icons">place</i>
+            {{bill.billNumber}}
+            <i class="material-icons">close</i>
+        </div> -->
+
+    </div>
     <div ng-include="'./partials/search-results-cards.html'"></div>
 </div>
 
@@ -76,4 +111,4 @@
                 <option value="WY">Wyoming</option>
                 </option>
             </select>
-        </div> -->
+        </div>

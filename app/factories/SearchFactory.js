@@ -15,11 +15,11 @@ app.factory("searchFactory", function($q, $http, $document){
                     Object.keys(preKeyData).forEach(function(key){
                         preKeyData[key].id=key;
                         keywordCallArray.push(preKeyData[key]);
-                    })
+                    });
                     if (keywordCallArray.length !== 0) {
                     resolve(keywordCallArray);
                     } else {
-                        Materialize.toast("No bills found. Search again.", 3000, "rounded")
+                        Materialize.toast("No bills found. Search again.", 3000, "rounded");
                     }
                 })
                 .error(function(error){
@@ -36,12 +36,6 @@ app.factory("searchFactory", function($q, $http, $document){
         return $q(function(resolve, reject){
             $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
                 .success(function(queryData){
-                    // let preKeyData = queryData;
-                    // Object.keys(preKeyData).forEach(function(key){
-                    //     preKeyData[key].id=key;
-                    //     singleBillStorage.push(preKeyData[key]);
-                    // })
-                    // singleBillStorage = queryData;
                     resolve(queryData);
                 })
                 .error(function(error){

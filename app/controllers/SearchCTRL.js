@@ -1,20 +1,26 @@
 "use strict";
 // FILE PAIRS WITH MAIN.HTML AND SEARCH-FACTORY.JS
 
-app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBaseFactory) { // add in keywordCallStorage
+app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBaseFactory) {
     $scope.queryStorage = [];
     $scope.singleBillStorage = [];
     $scope.savedBillsArray = [];
+    $scope.dupeCheck = [];
 
-    fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
-        $scope.savedBillsArray = recalledBills;
-        console.log($scope.savedBillsArray);
-    });
+    // $scope.reviewSavedBills = () => {
+        fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
+            $scope.savedBillsArray = recalledBills;
+            // console.log($scope.savedBillsArray);
+        });
+    // };
+
+    $scope.clearButton = () => {
+        $(".card").remove();
+    }
 
     $scope.searchCall = () => {
         searchFactory.keywordCallStorage()
             .then(function(results){
-                // console.log(results);
                 $scope.queryStorage = results;
         });
     };
@@ -23,25 +29,34 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         searchFactory.billDetailAPI(bill)
             .then(function(results){
                 $scope.singleBillStorage = results;
-                // console.log($scope.singleBillStorage);
         });
     };
 
     $scope.saveBill = (bill) => {
-        fireBaseFactory.postBill(bill)
-            .then(function successCallback(response){
-                Materialize.toast(`${bill.bill_id} has been saved to your bills`, 3000, "rounded");
+        let duplicate = false;
+        for (let i = 0; i < $scope.savedBillsArray.length; i++){
+            if (bill.bill_id === $scope.savedBillsArray[i].billNumber){
+                duplicate = true;
+            };
+        };
+        if (duplicate === false) {
+            fireBaseFactory.postBillToFB(bill).then(function successCallback(response){
+                fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
+                    $scope.savedBillsArray = remainingBills;
+                    Materialize.toast(`${bill.bill_id} has been saved`, 3000, "rounded");
+                });
             });
+        } else {
+            Materialize.toast(`${bill.bill_id} is already in your list of Saved Bills`, 3000, "rounded red")
+        };
     };
 
-    $scope.removeBill = (billNumber, billID) => {
+    $scope.removeBill = (billID, billNumber, event) => {
+        // console.log(event.target);
         fireBaseFactory.deleteBillFromFB(billID).then(function(response){
-            console.log(response);
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;
-                console.log(remainingBills);
-                // Materialize.toast(`${billNumber} has been deleted!`, 3000, "rounded red");
-                // Materialize.toast(`${billID} has been deleted!`, 3000, "rounded red");
+                Materialize.toast(`${billNumber} has been deleted!`, 3000, "rounded");
             });
         });
     };

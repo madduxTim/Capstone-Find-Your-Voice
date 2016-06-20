@@ -1,13 +1,13 @@
 "use strict"
-var app = angular.module("FindYourVoice", ["ngRoute"])
+let app = angular.module("FindYourVoice", ["ngRoute"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {
   if(AuthFactory.isAuthenticated()){
-    console.log("User is authenticated, resolve route promise");
+    Materialize.toast("Signed in. Welcome back!", 2000, "rounded");
     resolve();
   } else {
-    console.log("User is not authenticated, reject route promise");
+    Materialize.toast("Error logging in. Try again.", 2000, "rounded");
     reject();
   }
 });
@@ -15,12 +15,12 @@ let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {
 app.config(function($routeProvider){
     $routeProvider.
         when("/", {
-            templateUrl: "partials/main.html",
+            templateUrl: "partials/search.html",
             controller: "SearchCTRL",
             resolve: {isAuth}
         }).
-        when("/main", {
-            templateUrl: "partials/main.html",
+        when("/search", {
+            templateUrl: "partials/search.html",
             controller: "SearchCTRL",
             resolve: {isAuth}
         }).
@@ -43,3 +43,11 @@ app.run(($location) => {
         }
     });
 });
+
+// THIS IS SUPPOSED TO BE WHAT ALLOWS DYNAMICALLY CREATED COLLAPSIBLES TO FUNCTION. NO WORKY YET. 
+  $(document).ready(function(){
+    Materialize.toast("read works", 800, "pink");
+    $('.collapsible').collapsible({
+      //accordion : false A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });

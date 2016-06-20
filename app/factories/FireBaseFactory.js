@@ -1,6 +1,7 @@
+"use strict";
 app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
 
-    var postBill = (bill) => {
+    let postBillToFB = (bill) => {
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
@@ -24,35 +25,31 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         });
     };
 
-    var retrieveSavedBills = () => {
-        let makesADiff = [];
+    let retrieveSavedBills = () => {
+        let keysArray = [];
         let user = AuthFactory.getUser();
-        // console.log(user.uid);
         return $q(function(resolve, reject){
             $http
-                // .get(`${firebaseURL}saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
-                .get(`${firebaseURL}saved-bills.json`) // THIS WORKS, BUT NOT LINE ABOVE
+                .get(`${firebaseURL}saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
                 .success(function(savedBillObj){
-                    var preKeyBills = savedBillObj;
+                    let preKeyBills = savedBillObj;
                     Object.keys(preKeyBills).forEach(function(key){
                         preKeyBills[key].id=key;
-                        makesADiff.push(preKeyBills[key]);
+                        keysArray.push(preKeyBills[key]);
                     });
-                    resolve(makesADiff);
+                    resolve(keysArray);
                 })
                 .error(function(error){
                     reject(error);
                 });
         });
-        console.log(makesADiff);
-    }
+    };
 
-    var deleteBillFromFB = (billToKill) => {
-        // return console.log(billToKill);
-        return q$(function(resolve, reject){
+    let deleteBillFromFB = (billToKill) => {
+        // console.log(billToKill);
+        return $q(function(resolve, reject){
             $http
-                // .delete(firebaseURL+`saved-bills/${billToKill}.json`)
-                .delete("https://find-your-voice.firebaseio.com/saved-bills/-KKVIbwsVo0CB4Txs4gT")
+                .delete(firebaseURL+`saved-bills/${billToKill}.json`)
                 .success(function(returnsFromFB){
                     resolve(returnsFromFB);
                 })
@@ -62,7 +59,7 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         });
     };
 
-    return {postBill:postBill, 
+    return {postBillToFB:postBillToFB, 
             retrieveSavedBills:retrieveSavedBills, 
             deleteBillFromFB:deleteBillFromFB};
 
