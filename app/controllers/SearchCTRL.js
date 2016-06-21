@@ -10,7 +10,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     // $scope.reviewSavedBills = () => {
         fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
             $scope.savedBillsArray = recalledBills;
-            // console.log($scope.savedBillsArray);
+            console.log($scope.savedBillsArray);
         });
     // };
 
@@ -33,6 +33,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     };
 
     $scope.saveBill = (bill) => {
+        let notes = $("#notes-field").val();
         let duplicate = false;
         for (let i = 0; i < $scope.savedBillsArray.length; i++){
             if (bill.bill_id === $scope.savedBillsArray[i].billNumber){
@@ -40,7 +41,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
             };
         };
         if (duplicate === false) {
-            fireBaseFactory.postBillToFB(bill).then(function successCallback(response){
+            fireBaseFactory.postBillToFB(bill, notes).then(function successCallback(response){
                 fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                     $scope.savedBillsArray = remainingBills;
                     Materialize.toast(`${bill.bill_id} has been saved`, 3000, "rounded");

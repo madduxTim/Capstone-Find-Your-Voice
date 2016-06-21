@@ -1,5 +1,5 @@
 "use strict"
-let app = angular.module("FindYourVoice", ["ngRoute"])
+let app = angular.module("FindYourVoice", ["ngRoute", "ui.materialize"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {

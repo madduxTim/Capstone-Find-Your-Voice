@@ -1,7 +1,7 @@
 "use strict";
 app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
 
-    let postBillToFB = (bill) => {
+    let postBillToFB = (bill, notes) => {
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
@@ -14,7 +14,8 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
                         session: bill.session,
                         sponsors: bill.sponsors[0].name,
                         billPage: bill.sources[0].url,
-                        billText: bill.versions[0].url
+                        billText: bill.versions[0].url,
+                        notes: notes
                     }))
                 .success(function(firebaseObj) {
                     resolve(firebaseObj);

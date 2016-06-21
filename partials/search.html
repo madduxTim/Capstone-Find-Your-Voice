@@ -20,30 +20,27 @@
         <ul class="collapsible popout" data-collapsible="accordion" ng-repeat="bill in savedBillsArray">
             <li class=>
                 <div class="collapsible-header">
-                    {{bill.billNumber}}
+                    {{bill.billNumber}}  || {{bill.sponsors}}
                     <i class="material-icons right" ng-click="removeBill(bill.id, bill.billNumber, $event)">delete</i>
                 </div>
-                <div class="collapsible-body"><p>{{bill.title}}</p></div>
+                <div class="collapsible-body">
+                    <p>{{bill.title}}</p>
+                    <a class='btn' href='#demoModal' modal>Show Modal</a>
+                    <div id="demoModal" class="modal">
+                        <div class="modal-content">
+                            <h4>Modal header</h4>
+                            <p>A bunch of text</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
-
-        <!-- TO USE MODALS, I THINK I'M GOING TO HAVE TO MESS WITH ROUTING AGAIN, RIGHT? -->
-          <!-- Modal Trigger -->
-        <!--   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-         -->
-          <!-- Modal Structure -->
-        <!--   <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Modal Header</h4>
-              <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-          </div> -->
     
         <!-- EXPERIMENTING WITH CHIPS -->
-         <!-- <div class="chip" ng-repeat="bill in savedBillsArray">
+<!--          <div class="chip" ng-repeat="bill in savedBillsArray">
             <i class="left material-icons">place</i>
             {{bill.billNumber}}
             <i class="material-icons">close</i>
