@@ -8,3 +8,6 @@ body {
   background-color: #e3f2fd;
   min-height: 400px;
   margin-top: 2%; }
+
+button {
+  margin-left: 2%; }

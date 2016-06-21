@@ -1,7 +1,22 @@
 <!-- INCLUDED ON MAIN.HTML -->
-<!-- PAIRS WITH LANDINGSEARCHCTRL.JS -->
+<!-- PAIRS WITH SearchCTRL.JS -->
+
+
 <div id="searchResults" class="col s12 m8 l9">
-  <div class="card" ng-repeat="bill in queryStorage">
+
+  <ul class="collapsible popout" data-collapsible="accordion" ng-repeat="bill in queryStorage">
+      <li ng-click="singleBillAPI(bill.bill_id)">
+          <div class="collapsible-header truncate">
+              {{bill.bill_id}} || {{bill.title}}
+          </div>
+          <button ng-click="saveBill(singleBillStorage)" class="collapsible-body btn right light-blue"><i class="material-icons">save</i></button>
+          <div class="collapsible-body">
+            <p>{{singleBillStorage.sponsors[0].name}} || {{bill.title}}</p>
+          </div>
+      </li>
+  </ul>
+
+  <!-- <div class="card" ng-repeat="bill in queryStorage">
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">{{bill.bill_id}}</span>
       <button class="bill-detail-buttons btn right light-blue activator" ng-click="singleBillAPI(bill.bill_id)">View Bill Details</button>
@@ -11,17 +26,16 @@
       <span class="card-title grey-text text-darken-4">{{singleBillStorage.bill_id}} || {{singleBillStorage.sponsors[0].name}}
         <button class="btn right light-blue"><i class="material-icons">close</i></button>
         <button class="btn right light-blue"><i class="material-icons">edit</i></button>
-        <button class="btn right light-blue"><i class="material-icons">delete</i></button>
-        <button class="btn right light-blue"><i class="material-icons">save</i></button>
+        <button ng-click="saveBill(singleBillStorage)" class="btn right light-blue"><i class="material-icons">save</i></button>
       </span>
       <p>{{singleBillStorage.title}}</p>
       <a href="{{singleBillStorage.versions[0].url}}" target="_blank">Full Bill Text</a>
       <div class="row">
         <div class="input-field col s12">
-          <textarea class="materialize-textarea"></textarea>
+          <textarea id="notes-field" class="materialize-textarea"></textarea>
           <label>Your Notes / Communication</label>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
