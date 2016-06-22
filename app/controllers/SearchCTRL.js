@@ -15,7 +15,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     // };
 
     $scope.clearButton = () => {
-        $(".card").remove();
+        $(".search-cards").remove();
     }
 
     $scope.searchCall = () => {

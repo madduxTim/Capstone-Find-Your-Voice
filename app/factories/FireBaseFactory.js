@@ -60,8 +60,10 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         });
     };
 
-    return {postBillToFB:postBillToFB, 
-            retrieveSavedBills:retrieveSavedBills, 
-            deleteBillFromFB:deleteBillFromFB};
+    return {
+        postBillToFB:postBillToFB, 
+        retrieveSavedBills:retrieveSavedBills, 
+        deleteBillFromFB:deleteBillFromFB
+    };
 
 });

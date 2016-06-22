@@ -16,6 +16,12 @@ body {
     margin-top: 2%;
 }
 
-button {
-    margin-left: 2%;
+.btn, btn-large, .btn-flat {
+    margin: 5px;
+    border-radius: 15px;
+}
+
+
+.sponsor {
+    font-weight: bold;
 }

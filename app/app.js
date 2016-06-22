@@ -43,11 +43,3 @@ app.run(($location) => {
         }
     });
 });
-
-// THIS IS SUPPOSED TO BE WHAT ALLOWS DYNAMICALLY CREATED COLLAPSIBLES TO FUNCTION. NO WORKY YET. 
-  $(document).ready(function(){
-    Materialize.toast("read works", 800, "pink");
-    $('.collapsible').collapsible({
-      //accordion : false A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });
