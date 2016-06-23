@@ -7,12 +7,10 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     $scope.savedBillsArray = [];
     $scope.dupeCheck = [];
 
-    // $scope.reviewSavedBills = () => {
-        fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
-            $scope.savedBillsArray = recalledBills;
-            console.log($scope.savedBillsArray);
+    fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
+        $scope.savedBillsArray = recalledBills;
+        console.log($scope.savedBillsArray);
         });
-    // };
 
     $scope.clearButton = () => {
         $(".search-cards").remove();
@@ -52,8 +50,11 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         };
     };
 
+    $scope.update = () => {
+        console.log("update");
+    };
+
     $scope.removeBill = (billID, billNumber, event) => {
-        // console.log(event.target);
         fireBaseFactory.deleteBillFromFB(billID).then(function(response){
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;

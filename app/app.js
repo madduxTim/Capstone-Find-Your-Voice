@@ -2,6 +2,11 @@
 let app = angular.module("FindYourVoice", ["ngRoute", "ui.materialize"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
+    $(document).ready(function(){
+        console.log("hello from parallax");
+      $('.parallax').parallax();
+    });
+
 let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {
   if(AuthFactory.isAuthenticated()){
     Materialize.toast("Signed in. Welcome back!", 2000, "rounded");

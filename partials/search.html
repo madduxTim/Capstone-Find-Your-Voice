@@ -1,5 +1,5 @@
 <!-- PAIRS WITH LANDSEARCHCTRL.JS -->
- <div class="row">
+ <div id="searchArea" class="row">
     <div id="searchColumn" class="col s12 m4 l3">   
 <!--         <div class="switch">
             <label>
@@ -13,7 +13,6 @@
         <input id="allBillsAPICall" type="text" placeholder="Search for Keywords">
         <button class="btn right blue lighten-1" name="action" ng-click="clearButton()"><i class="material-icons">replay</i></button>
         <button class="btn right blue lighten-1" name="action" ng-click="searchCall()"><i class="material-icons">search</i></button>
-
         <h5>Saved Bills</h5>
         <ul class="collapsible" data-collapsible="accordion" ng-repeat="bill in savedBillsArray">
             <li>
@@ -22,11 +21,11 @@
                 </div>
                 <div class="collapsible-body">
                     <button class="btn right light-blue" ng-click="removeBill(bill.id, bill.billNumber, $event)"><i class="material-icons">delete</i></button>
-                    <button class="btn right light-blue" href="#demoModal" modal><i class="material-icons">launch</i></button>
+                    <button class="btn right light-blue" href="#email-build-modal" modal><i class="material-icons">launch</i></button>
                     <p>{{bill.title}}</p>
                 </div>
                 <!-- MODAL INCLUDE -->
-                <div ng-include="'./partials/modal.html'"></div>
+                <div ng-include="'./partials/email-build-modal.html'"></div>
             </li>
         </ul>
     </div>

@@ -1,9 +1,6 @@
 <!-- INCLUDED ON MAIN.HTML -->
 <!-- PAIRS WITH SearchCTRL.JS -->
-
-
 <div id="searchResults" class="col s12 m8 l9">
-
   <ul class="collapsible search-cards" data-collapsible="accordion" ng-repeat="bill in queryStorage">
       <li ng-click="singleBillAPI(bill.bill_id)">
           <div class="collapsible-header truncate">
@@ -11,7 +8,7 @@
               {{bill.title}}
           </div>
           <div class="collapsible-body">
-            <button ng-click="saveBill(singleBillStorage)" class="btn right light-blue"><i class="material-icons">save</i></button>
+            <button class="btn right blue lighten-1" name="action" ng-click="saveBill(singleBillStorage)"><i class="material-icons">save</i></button>
             <p>
               <span class="sponsor">{{singleBillStorage.sponsors[0].name}}</span>
               {{bill.title}} - 

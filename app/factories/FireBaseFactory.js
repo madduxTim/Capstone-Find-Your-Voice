@@ -5,7 +5,7 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
-                .post(firebaseURL + "saved-bills.json",
+                .post(firebaseURL+"saved-bills.json",
                     JSON.stringify({
                         uid: user.uid,
                         title: bill.title,
@@ -17,7 +17,24 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
                         billText: bill.versions[0].url,
                         notes: notes
                     }))
-                .success(function(firebaseObj) {
+                .success(function(firebaseObj){
+                    resolve(firebaseObj);
+                })
+                .error(function(error){
+                    reject(error);
+                });
+        });
+    };
+
+    let updateNotes = (bill, notes) => {
+        let user = AuthFactory.getUser();
+        return $q(function(resolve, reject){
+            $http
+                .patch(firebaseURL+"saved-bills/"+bill+".json",
+                    JSON.stringify({
+                        notes: notes
+                    }))
+                .success(function(firebaseObj){
                     resolve(firebaseObj);
                 })
                 .error(function(error){
