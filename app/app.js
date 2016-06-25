@@ -2,6 +2,11 @@
 let app = angular.module("FindYourVoice", ["ngRoute", "ui.materialize"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
+    $(document).ready(function(){
+        console.log("hello from parallax");
+      $('.parallax').parallax();
+    });
+
 let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {
   if(AuthFactory.isAuthenticated()){
     Materialize.toast("Signed in. Welcome back!", 2000, "rounded");
@@ -43,11 +48,3 @@ app.run(($location) => {
         }
     });
 });
-
-// THIS IS SUPPOSED TO BE WHAT ALLOWS DYNAMICALLY CREATED COLLAPSIBLES TO FUNCTION. NO WORKY YET. 
-  $(document).ready(function(){
-    Materialize.toast("read works", 800, "pink");
-    $('.collapsible').collapsible({
-      //accordion : false A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });

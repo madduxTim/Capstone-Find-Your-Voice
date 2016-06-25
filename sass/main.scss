@@ -1,21 +1,44 @@
 $sassTest: lightgrey;
-$neatoColor1: #bbdefb; 
+$neatoColor1: whitesmoke; 
 $neatoColor2: #e3f2fd;
 
 body {
-    background-color: $neatoColor2;
+    background: url(http://riaclu.org/images/uploads/Protesters.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    background-color: $neatoColor1;
 }
 
-#searchColumn {
-    padding: 2%;
+#email-build-modal {
+    z-index: 50000;
 }
 
-#searchResults {
-    background-color: $neatoColor2;
-    min-height: 400px;
+nav, footer {
+    opacity: .96;
+}
+
+#searchArea {
     margin-top: 2%;
+    background-color: $neatoColor1;
+    opacity: .96;
 }
 
-button {
-    margin-left: 2%;
+#searchResults, #searchColumn {
+    min-height: 400px;
 }
+
+.btn, btn-large, .btn-flat {
+    margin: 5px;
+    border-radius: 15px;
+}
+
+.sponsor {
+    font-weight: bold;
+}
+
+.collapsible-body, .modal-content {
+    background-color: $neatoColor1;
+}
+
+// div {
+//     opacity: 0;
+// }

@@ -44,5 +44,8 @@ app.factory("searchFactory", function($q, $http, $document){
         });
     };
 
-    return {keywordCallStorage:keywordCallStorage, billDetailAPI:billDetailAPI};
+    return {
+        keywordCallStorage:keywordCallStorage, 
+        billDetailAPI:billDetailAPI
+    };
 });

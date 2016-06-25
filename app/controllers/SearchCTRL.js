@@ -7,15 +7,13 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     $scope.savedBillsArray = [];
     $scope.dupeCheck = [];
 
-    // $scope.reviewSavedBills = () => {
-        fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
-            $scope.savedBillsArray = recalledBills;
-            console.log($scope.savedBillsArray);
+    fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
+        $scope.savedBillsArray = recalledBills;
+        console.log($scope.savedBillsArray);
         });
-    // };
 
     $scope.clearButton = () => {
-        $(".card").remove();
+        $(".search-cards").remove();
     }
 
     $scope.searchCall = () => {
@@ -52,8 +50,18 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         };
     };
 
-    $scope.removeBill = (billID, billNumber, event) => {
-        // console.log(event.target);
+    $scope.update = (billID) => {
+        let note = $("#saved-bill-notes").val();
+        console.log("update notes func", billID, note);
+        fireBaseFactory.updateNotes(billID, note).then(function(response){
+            fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
+                $scope.savedBillsArray = remainingBills;
+                Materialize.toast("Notes updated", 3000, "rounded");
+            });
+        });
+    };
+
+    $scope.removeBill = (billID, billNumber) => {
         fireBaseFactory.deleteBillFromFB(billID).then(function(response){
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;
