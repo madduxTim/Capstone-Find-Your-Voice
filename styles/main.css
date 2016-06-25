@@ -1,7 +1,7 @@
 body {
   background: url(http://riaclu.org/images/uploads/Protesters.jpg) no-repeat center center fixed;
   background-size: 100%;
-  background: whitesmoke; }
+  background-color: whitesmoke; }
 
 #email-build-modal {
   z-index: 50000; }

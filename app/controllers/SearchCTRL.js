@@ -51,7 +51,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     };
 
     $scope.update = () => {
-        console.log("update");
+        console.log("update is working with ng-blur");
     };
 
     $scope.removeBill = (billID, billNumber, event) => {
