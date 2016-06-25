@@ -50,11 +50,18 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         };
     };
 
-    $scope.update = () => {
-        console.log("update is working with ng-blur");
+    $scope.update = (billID) => {
+        let note = $("#saved-bill-notes").val();
+        console.log("update notes func", billID, note);
+        fireBaseFactory.updateNotes(billID, note).then(function(response){
+            fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
+                $scope.savedBillsArray = remainingBills;
+                Materialize.toast("Notes updated", 3000, "rounded");
+            });
+        });
     };
 
-    $scope.removeBill = (billID, billNumber, event) => {
+    $scope.removeBill = (billID, billNumber) => {
         fireBaseFactory.deleteBillFromFB(billID).then(function(response){
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;

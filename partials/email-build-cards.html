@@ -1,0 +1,31 @@
+  <div class="card col s12 m12 l12">
+    <div class="waves-effect waves-block waves-light">
+        <p class="activator">{{bill.billNumber}} - {{bill.sponsors}}</p>
+        <p class="activator">{{bill.title}}</p>
+    </div>
+    <div class="card-content">
+        <span class="activator grey-text text-darken-4"><i class="material-icons right">email</i></span>
+        <p><a href="{{bill.billText}}" target="_blank">Full Bill Text</a></p>
+    </div>
+    <div class="card-reveal">
+      <div class="row">
+        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+      </div>
+      <div class="row">
+          <div class="input-field col s6">
+              <input disabled value="edit these in your email"type="text" for="toLine" class="validate">
+              <label class="active" for="toLine">To: </label>
+          </div>
+          <div class="input-field col s6">
+              <input value="{{bill.billNumber}}" type="text" for="subjectLine" class="validate">
+              <label class="active" for="subjectLine">Subject: </label>
+          </div>
+          <div class="input-field col s12">
+              <textarea id="saved-bill-notes" class="materialize-textarea" ng-blur="update(bill.id)">{{bill.notes}}</textarea>
+              <label class="active" for="body">Body: </label>
+          </div>
+          <a class="btn right light-blue" ng-click="removeBill(bill.id, bill.billNumber)"><i class="material-icons">delete</i></a>
+          <a class="btn light-blue right" href="mailto:timothymaddux@gmail.com,tmaddux@fbtlaw.com?Subject='{{bill.billNumber}}'&Body='{{bill.notes}}!'"><i class="material-icons">email</i></a>
+      </div>    
+    </div>
+  </div>

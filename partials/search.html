@@ -1,34 +1,21 @@
 <!-- PAIRS WITH LANDSEARCHCTRL.JS -->
- <div id="searchArea" class="row">
-    <div id="searchColumn" class="col s12 m4 l3">   
-<!--         <div class="switch">
-            <label>
-            City
-            <input type="checkbox">
-            <span class="lever"></span>
-            State
-            </label>
-        </div> -->
+<div id="searchArea" class="row">
+
+    <div id="searchColumn" class="col s12 m4 l3"> 
+
+        <!-- SEARCH LEGISLATION SECTION -->
         <h5>Search TN Legislation</h5>
         <input id="allBillsAPICall" type="text" placeholder="Search for Keywords">
         <button class="btn right blue lighten-1" name="action" ng-click="clearButton()"><i class="material-icons">replay</i></button>
         <button class="btn right blue lighten-1" name="action" ng-click="searchCall()"><i class="material-icons">search</i></button>
+        
+        <!-- SAVED BILLS SECTION -->
         <h5>Saved Bills</h5>
-        <ul class="collapsible" data-collapsible="accordion" ng-repeat="bill in savedBillsArray">
-            <li>
-                <div class="collapsible-header">
-                    {{bill.billNumber}}  -  {{bill.sponsors}}
-                </div>
-                <div class="collapsible-body">
-                    <button class="btn right light-blue" ng-click="removeBill(bill.id, bill.billNumber, $event)"><i class="material-icons">delete</i></button>
-                    <button class="btn right light-blue" href="#email-build-modal" modal><i class="material-icons">launch</i></button>
-                    <p>{{bill.title}}</p>
-                </div>
-                <!-- MODAL INCLUDE -->
-                <div ng-include="'./partials/email-build-modal.html'"></div>
-            </li>
-        </ul>
+        <div ng-include="'./partials/email-build-cards.html'" ng-repeat="bill in savedBillsArray"></div>
+
     </div>
+
     <!-- SEARCH RESULTS INCLUDE -->
     <div ng-include="'./partials/search-results-cards.html'"></div>
+
 </div>

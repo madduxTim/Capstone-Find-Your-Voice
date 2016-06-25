@@ -27,6 +27,7 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     };
 
     let updateNotes = (bill, notes) => {
+        console.log(bill, notes);
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
@@ -80,7 +81,8 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     return {
         postBillToFB:postBillToFB, 
         retrieveSavedBills:retrieveSavedBills, 
-        deleteBillFromFB:deleteBillFromFB
+        deleteBillFromFB:deleteBillFromFB,
+        updateNotes:updateNotes
     };
 
 });
