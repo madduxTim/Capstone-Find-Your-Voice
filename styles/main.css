@@ -7,9 +7,14 @@ body {
   z-index: 50000; }
 
 nav, footer {
-  opacity: .96; }
+  opacity: .85; }
 
 #searchArea {
+  margin-top: 2%;
+  background-color: whitesmoke;
+  opacity: .96; }
+
+#purpose {
   margin-top: 2%;
   background-color: whitesmoke;
   opacity: .96; }
@@ -17,7 +22,7 @@ nav, footer {
 #searchResults, #searchColumn {
   min-height: 400px; }
 
-.btn, btn-large, .btn-flat {
+.btn {
   margin: 5px;
   border-radius: 15px; }
 

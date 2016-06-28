@@ -8,15 +8,25 @@ body {
     background-color: $neatoColor1;
 }
 
+.explain-cards {
+    margin 3%;
+}
+
 #email-build-modal {
     z-index: 50000;
 }
 
 nav, footer {
-    opacity: .96;
+    opacity: .85;
 }
 
 #searchArea {
+    margin-top: 2%;
+    background-color: $neatoColor1;
+    opacity: .96;
+}
+
+#purpose {
     margin-top: 2%;
     background-color: $neatoColor1;
     opacity: .96;
@@ -26,7 +36,7 @@ nav, footer {
     min-height: 400px;
 }
 
-.btn, btn-large, .btn-flat {
+.btn {
     margin: 5px;
     border-radius: 15px;
 }
@@ -38,7 +48,3 @@ nav, footer {
 .collapsible-body, .modal-content {
     background-color: $neatoColor1;
 }
-
-// div {
-//     opacity: 0;
-// }
