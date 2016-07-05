@@ -8,8 +8,10 @@ body {
     background-color: $neatoColor1;
 }
 
-.explain-cards {
-    margin 3%;
+.logo {
+    margin-left: 8%;
+    max-height: 60px;
+    max-width: 700px;
 }
 
 #email-build-modal {
@@ -30,6 +32,7 @@ nav, footer {
     margin-top: 2%;
     background-color: $neatoColor1;
     opacity: .96;
+    min-height: 400px;
 }
 
 #searchResults, #searchColumn {

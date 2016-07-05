@@ -3,7 +3,6 @@ let app = angular.module("FindYourVoice", ["ngRoute", "ui.materialize"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
     $(document).ready(function(){
-        console.log("hello from parallax");
       $('.parallax').parallax();
     });
 
