@@ -8,12 +8,18 @@ body {
     background-color: $neatoColor1;
 }
 
+.logo {
+    margin-left: 8%;
+    max-height: 60px;
+    max-width: 700px;
+}
+
 #email-build-modal {
     z-index: 50000;
 }
 
 nav, footer {
-    opacity: .96;
+    opacity: .85;
 }
 
 #searchArea {
@@ -22,11 +28,18 @@ nav, footer {
     opacity: .96;
 }
 
+#purpose {
+    margin-top: 2%;
+    background-color: $neatoColor1;
+    opacity: .96;
+    min-height: 400px;
+}
+
 #searchResults, #searchColumn {
     min-height: 400px;
 }
 
-.btn, btn-large, .btn-flat {
+.btn {
     margin: 5px;
     border-radius: 15px;
 }
@@ -38,7 +51,3 @@ nav, footer {
 .collapsible-body, .modal-content {
     background-color: $neatoColor1;
 }
-
-// div {
-//     opacity: 0;
-// }
