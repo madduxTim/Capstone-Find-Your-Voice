@@ -27,7 +27,7 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     };
 
     let updateNotes = (bill, notes) => {
-        console.log(bill, notes);
+        // console.log(bill, notes);
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
@@ -65,7 +65,6 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     };
 
     let deleteBillFromFB = (billToKill) => {
-        // console.log(billToKill);
         return $q(function(resolve, reject){
             $http
                 .delete(firebaseURL+`saved-bills/${billToKill}.json`)
