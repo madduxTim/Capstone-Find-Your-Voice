@@ -3,6 +3,12 @@ body {
   background-size: 100%;
   background-color: whitesmoke; }
 
+#register {
+  margin-left: 10px; }
+
+#purpose-statement {
+  margin-left: 3%; }
+
 .logo {
   margin-left: 8%;
   max-height: 60px;
