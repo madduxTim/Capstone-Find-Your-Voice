@@ -8,7 +8,7 @@
               {{bill.title}}
           </div>
           <div class="collapsible-body">
-            <button class="btn right blue lighten-1" name="action" ng-click="saveBill(singleBillStorage)"><i class="material-icons">save</i></button>
+            <button class="btn right blue lighten-1" name="action" ng-click="saveBill(singleBillStorage, $event)"><i class="material-icons">save</i></button>
             <p>
               <span class="sponsor">{{singleBillStorage.sponsors[0].name}}</span>
               {{bill.title}} - 

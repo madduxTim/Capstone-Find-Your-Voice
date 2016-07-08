@@ -9,7 +9,6 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
 
     fireBaseFactory.retrieveSavedBills().then(function(recalledBills){
         $scope.savedBillsArray = recalledBills;
-        // console.log($scope.savedBillsArray);
         });
 
     $scope.clearButton = () => {
@@ -34,9 +33,8 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
             console.log("hello");
         });
         
-    $scope.saveBill = (bill) => {
-        // let notes = $("#notes-field").val();
-        // console.log(notes);
+    $scope.saveBill = (bill, $event) => {
+        let notes = $event.currentTarget.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.value;
         let duplicate = false;
         for (let i = 0; i < $scope.savedBillsArray.length; i++){
             if (bill.bill_id === $scope.savedBillsArray[i].billNumber){
@@ -55,9 +53,9 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
         };
     };
 
-    $scope.update = (billID) => {
+    $scope.update = (billID, $event) => {
         let note = $("#saved-bill-notes").val();
-        // console.log("update notes func", billID, note);
+        console.log($event.);
         fireBaseFactory.updateNotes(billID, note).then(function(response){
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;
