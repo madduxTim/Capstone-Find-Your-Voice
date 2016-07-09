@@ -28,10 +28,6 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
                 $scope.singleBillStorage = results;
         });
     };
-
-        $("#notes-field").click(function(){
-            console.log("hello");
-        });
         
     $scope.saveBill = (bill, $event) => {
         let notes = $event.currentTarget.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.value;
@@ -54,8 +50,7 @@ app.controller("SearchCTRL", function($scope, $location, searchFactory, fireBase
     };
 
     $scope.update = (billID, $event) => {
-        let note = $("#saved-bill-notes").val();
-        console.log($event.);
+        let note = $event.currentTarget.value;
         fireBaseFactory.updateNotes(billID, note).then(function(response){
             fireBaseFactory.retrieveSavedBills().then(function(remainingBills){
                 $scope.savedBillsArray = remainingBills;

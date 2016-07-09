@@ -4,19 +4,13 @@ app.factory("AuthFactory", function($http, firebaseURL) {
   let currentUserData = null;
 
   return {
-    // Determine if the client is authenticated //
-    
     isAuthenticated () {
       let authData = ref.getAuth();
       return (authData) ? true : false;
     },
-
     getUser () {
       return currentUserData;
     },
-
-    // Authenticate the client via Firebase //
-    
     authenticate (credentials) {
       return new Promise((resolve, reject) => {
         ref.authWithPassword({
@@ -32,13 +26,9 @@ app.factory("AuthFactory", function($http, firebaseURL) {
           }
         });
       });
-    },
-
-    // Store each Firebase user's id in the `users` collection //
-    
+    },    
     storeUser (authData) {
       let stringifiedUser = JSON.stringify({ uid: authData.uid });
-
       return new Promise((resolve, reject) => {
         $http
           .post(`${firebaseURL}/users.json`, stringifiedUser)
@@ -48,6 +38,5 @@ app.factory("AuthFactory", function($http, firebaseURL) {
           );
       });
     }
-
   };
 });

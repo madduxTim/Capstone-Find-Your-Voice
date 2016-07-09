@@ -21,7 +21,7 @@
               <label class="active" for="subjectLine">Subject: </label>
           </div>
           <div class="input-field col s12">
-              <textarea id="saved-bill-notes" class="materialize-textarea" ng-blur="update(bill.id)">{{bill.notes}}</textarea>
+              <textarea id="saved-bill-notes" class="materialize-textarea" ng-blur="update(bill.id, $event)">{{bill.notes}}</textarea>
               <label class="active" for="body">Body: </label>
           </div>
           <a class="btn right light-blue" ng-click="removeBill(bill.id, bill.billNumber)"><i class="material-icons">delete</i></a>
