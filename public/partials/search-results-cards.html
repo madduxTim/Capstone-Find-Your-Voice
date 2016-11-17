@@ -1,0 +1,26 @@
+<!-- INCLUDED ON MAIN.HTML -->
+<!-- PAIRS WITH SearchCTRL.JS -->
+<div id="searchResults" class="col s12 m8 l9">
+  <ul class="collapsible search-cards" data-collapsible="accordion" ng-repeat="bill in queryStorage">
+      <li ng-click="singleBillAPI(bill.bill_id)">
+          <div class="collapsible-header truncate">
+              <h5>{{bill.bill_id}}</h5>
+              {{bill.title}}
+          </div>
+          <div class="collapsible-body">
+            <button class="btn right blue lighten-1" name="action" ng-click="saveBill(singleBillStorage, $event)"><i class="material-icons">save</i></button>
+            <p>
+              <span class="sponsor">{{singleBillStorage.sponsors[0].name}}</span>
+              {{bill.title}} - 
+              <a href="{{singleBillStorage.versions[0].url}}" target="_blank">Full Bill Text</a>
+            </p>
+            <div class="row">
+              <div class="input-field col s12">
+                <label>Your Notes / Communication</label>
+                <textarea id="notes-field" class="materialize-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+      </li>
+  </ul>
+</div>
