@@ -1,0 +1,27 @@
+<!-- PAIRS WITH LANDSEARCHCTRL.JS -->
+<div id="email-build-modal" class="modal">
+    <div class="modal-content">
+        <h6>{{bill.billNumber}}</h6>
+        <p>
+            {{bill.title}} - 
+            <a href="{{bill.billText}}" target="_blank">Full Bill Text</a>
+        </p>
+        <div class="row">
+            <div class="input-field col s6">
+                <input disabled value="edit these in your email"type="text" for="toLine" class="validate">
+                <label class="active" for="toLine">To: </label>
+            </div>
+            <div class="input-field col s6">
+                <input value="{{bill.billNumber}}" type="text" for="subjectLine" class="validate">
+                <label class="active" for="subjectLine">Subject: </label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="body" class="materialize-textarea" ng-blur="update()">{{bill.notes}}</textarea>
+                <label class="active" for="body">Body: </label>
+            </div>
+            <a class="btn light-blue center-align" href="mailto:timothymaddux@gmail.com,tmaddux@fbtlaw.com?Subject='{{bill.billNumber}}'&Body='{{bill.notes}}!'"><i class="material-icons">email</i></a>
+        </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
