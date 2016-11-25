@@ -1,7 +1,23 @@
 body {
-  background: url(/img/background2.jpg) no-repeat center center fixed;
+  background: url(/img/background.jpg) no-repeat center center fixed;
   background-size: 100%;
   background-color: whitesmoke; }
+
+nav {
+  min-height: 110px;
+  opacity: .85;
+  text-align: center;
+  padding: 2%; }
+
+nav h1 {
+  margin-top: 30px; }
+
+footer {
+  opacity: .85;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 1%; }
 
 #title {
   display: inline;
@@ -21,9 +37,9 @@ body {
   width: 163px; }
 
 #purpose {
-  margin-top: 3%;
+  margin-top: 4%;
   background-color: whitesmoke;
-  opacity: .9;
+  opacity: .7;
   min-height: 400px; }
 
 #searchResults, #searchColumn {
@@ -33,23 +49,10 @@ body {
   margin-left: 10px; }
 
 #purpose-statement {
-  margin-left: 3%; }
+  margin: 2%; }
 
 #email-build-modal {
   z-index: 50000; }
-
-nav {
-  opacity: .85;
-  text-align: center;
-  min-height: 110px;
-  padding: 2%; }
-
-nav h1 {
-  margin-top: 30px; }
-
-footer {
-  opacity: .85;
-  text-align: center; }
 
 .logo {
   margin-top: -2%;
