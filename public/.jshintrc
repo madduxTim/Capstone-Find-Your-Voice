@@ -1,6 +1,0 @@
-{
-    "predef": [ "Firebase", "Promise", document", "console", "jquery", "module", "require", "jQuery", "angular", "Materialize", "app"],
-    "esversion": 6,
-    "globalstrict": true,
-    "jquery": true,
-}
