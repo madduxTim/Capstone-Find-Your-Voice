@@ -19,23 +19,21 @@ footer {
   padding-right: 10%;
   padding-bottom: 1%; }
 
-#title {
-  display: inline;
-  text-align: center;
-  font-weight: bolder;
-  font-style: italic;
-  margin-left: 10%; }
-
+/* #title {    
+    font-weight: bolder;
+    font-style: italic;
+    margin: 0%;
+} */
 #searchArea {
   margin-top: 3%;
   background-color: whitesmoke;
   opacity: .96; }
 
-#login, #logout {
-  margin-right: 3%;
-  margin-top: 2%;
-  width: 163px; }
-
+/* #login, #logout {
+    margin-right: 3%;
+    margin-top: 2%;
+    width: 163px;
+} */
 #purpose {
   margin-top: 4%;
   background-color: whitesmoke;

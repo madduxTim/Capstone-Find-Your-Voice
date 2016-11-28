@@ -2,9 +2,10 @@
 let app = angular.module("FindYourVoice", ["ngRoute", "ui.materialize"])
     .constant("firebaseURL", "https://find-your-voice.firebaseio.com/");
 
-    // $(document).ready(function(){
-    //   $('.parallax').parallax();
-    // });
+$(document).ready(function(){
+    $(".button-collapse").sideNav();
+});
+
 
 let isAuth = (AuthFactory) => new Promise ((resolve, reject) => {
   if(AuthFactory.isAuthenticated()){
