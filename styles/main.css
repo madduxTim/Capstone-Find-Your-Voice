@@ -19,21 +19,14 @@ footer {
   padding-right: 10%;
   padding-bottom: 1%; }
 
-/* #title {    
-    font-weight: bolder;
-    font-style: italic;
-    margin: 0%;
-} */
+#logo {
+  max-width: 40%; }
+
 #searchArea {
   margin-top: 3%;
   background-color: whitesmoke;
   opacity: .96; }
 
-/* #login, #logout {
-    margin-right: 3%;
-    margin-top: 2%;
-    width: 163px;
-} */
 #purpose {
   margin-top: 4%;
   background-color: whitesmoke;
@@ -52,16 +45,8 @@ footer {
 #email-build-modal {
   z-index: 50000; }
 
-.logo {
-  margin-top: -2%;
-  margin-left: 3%;
-  max-height: 120px;
-  display: inline;
-  position: fixed; }
-
 .btn {
-  margin: 5px;
-  border-radius: 15px; }
+  margin: 5px; }
 
 .sponsor {
   font-weight: bold; }
