@@ -1,0 +1,7 @@
+app.constant("FIREBASE_CONFIG", {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "https://find-your-voice.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: ""
+  });

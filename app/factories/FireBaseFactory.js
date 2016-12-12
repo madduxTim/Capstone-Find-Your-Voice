@@ -1,11 +1,12 @@
 "use strict";
-app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
+app.factory("fireBaseFactory", function($q, $http, FIREBASE_CONFIG, AuthFactory){
 
     let postBillToFB = (bill, notes) => {
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
-                .post(firebaseURL+"saved-bills.json",
+                .post(`${FIREBASE_CONFIG.databaseURL}/`+"saved-bills.json",
+                // .post(firebaseURL+"saved-bills.json",
                     JSON.stringify({
                         uid: user.uid,
                         title: bill.title,
@@ -31,7 +32,8 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
-                .patch(firebaseURL+"saved-bills/"+bill+".json",
+                // .patch(firebaseURL+"saved-bills/"+bill+".json",
+                .patch(`${FIREBASE_CONFIG.databaseURL}/`+"saved-bills/"+bill+".json",
                     JSON.stringify({
                         notes: notes
                     }))
@@ -49,7 +51,8 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
         let user = AuthFactory.getUser();
         return $q(function(resolve, reject){
             $http
-                .get(`${firebaseURL}saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
+                .get(`${FIREBASE_CONFIG.databaseURL}/saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
+                // .get(`${firebaseURL}saved-bills.json?orderBy="uid"&equalTo="${user.uid}"`)
                 .success(function(savedBillObj){
                     let preKeyBills = savedBillObj;
                     Object.keys(preKeyBills).forEach(function(key){
@@ -67,7 +70,8 @@ app.factory("fireBaseFactory", function($q, $http, firebaseURL, AuthFactory){
     let deleteBillFromFB = (billToKill) => {
         return $q(function(resolve, reject){
             $http
-                .delete(firebaseURL+`saved-bills/${billToKill}.json`)
+                // .delete(firebaseURL+`saved-bills/${billToKill}.json`)
+                .delete(`${FIREBASE_CONFIG.databaseURL}/saved-bills/${billToKill}.json`)
                 .success(function(returnsFromFB){
                     resolve(returnsFromFB);
                 })
