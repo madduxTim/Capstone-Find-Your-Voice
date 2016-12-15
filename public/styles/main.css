@@ -1,0 +1,55 @@
+body {
+  background: url(/img/background.jpg) no-repeat center center fixed;
+  background-size: 100%;
+  background-color: whitesmoke; }
+
+nav {
+  min-height: 110px;
+  opacity: .85;
+  text-align: center;
+  padding: 2%; }
+
+nav h1 {
+  margin-top: 30px; }
+
+footer {
+  opacity: .85;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 1%; }
+
+#logo {
+  max-width: 40%; }
+
+#searchArea {
+  margin-top: 3%;
+  background-color: whitesmoke;
+  opacity: .96; }
+
+#purpose {
+  margin-top: 4%;
+  background-color: whitesmoke;
+  opacity: .7;
+  min-height: 400px; }
+
+#searchResults, #searchColumn {
+  min-height: 400px; }
+
+#register {
+  margin-left: 10px; }
+
+#purpose-statement {
+  margin: 2%; }
+
+#email-build-modal {
+  z-index: 50000; }
+
+.btn {
+  margin: 5px; }
+
+.sponsor {
+  font-weight: bold; }
+
+.collapsible-body, .modal-content {
+  background-color: whitesmoke; }
