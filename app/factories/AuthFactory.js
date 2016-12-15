@@ -39,18 +39,18 @@ app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
-  let authenticateGoogle = () => {
-    return $q((resolve, reject) => {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider)
-        .then((authData) => {
-          currentUserData = authData.user;
-          resolve(currentUserData);
-        }).catch((error)=> {
-          reject(error);
-        });
-    });
-  };
+  // let authenticateGoogle = () => {
+  //   return $q((resolve, reject) => {
+  //     var provider = new firebase.auth.GoogleAuthProvider();
+  //     firebase.auth().signInWithPopup(provider)
+  //       .then((authData) => {
+  //         currentUserData = authData.user;
+  //         resolve(currentUserData);
+  //       }).catch((error)=> {
+  //         reject(error);
+  //       });
+  //   });
+  // };
 
-  return {isAuthenticated:isAuthenticated, getUser:getUser, logout:logout, registerWithEmail:registerWithEmail, authenticate:authenticate, authenticateGoogle: authenticateGoogle};
+  return {isAuthenticated:isAuthenticated, getUser:getUser, logout:logout, registerWithEmail:registerWithEmail, authenticate:authenticate};
 });
