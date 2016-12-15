@@ -27,6 +27,10 @@ footer {
     padding-bottom: 1%;
 }
 
+#logo {
+    max-width: 40%;
+}
+
 #searchArea {
     margin-top: 3%;
     background-color: $neatoColor1;
@@ -57,17 +61,8 @@ footer {
     z-index: 50000;
 }
 
-.logo {
-    margin-top: -2%;
-    margin-left: 3%;
-    max-height: 120px;
-    display: inline;
-    position: fixed;
-}
-
 .btn {
     margin: 5px;
-    border-radius: 15px;
 }
 
 .sponsor {

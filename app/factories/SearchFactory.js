@@ -2,14 +2,14 @@
 // PAIRS WITH MAIN.HTML AND SearchCTRL.JS
 
 // THIS IS THE FIRST API CALL BASED ON KEYWORDS 
-app.factory("searchFactory", function($q, $http, $document){
+app.factory("searchFactory", function($q, $http, $document, OPENSTATES_API){
 
     // FIRST, ALL BILLS API CALL BASED ON KEYWORDS 
     let keywordCallStorage = function() {
         let keywordCallArray = [];
         let searchTerms = $document.find("#allBillsAPICall").val();
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A109&apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A110&apikey=${OPENSTATES_API.apikey}`)     
                 .success(function(queryData){
                     let preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
@@ -34,7 +34,7 @@ app.factory("searchFactory", function($q, $http, $document){
     let billDetailAPI = function(bill) {
         let singleBillStorage = [];
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=a53a72668fc34fe1b9f38ede139fb2b1`)     
+            $http.get(`http://openstates.org/api/v1/bills/tn/110/${bill}/?apikey=${OPENSTATES_API.apikey}`)     
                 .success(function(queryData){
                     resolve(queryData);
                 })

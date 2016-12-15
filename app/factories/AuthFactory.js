@@ -1,42 +1,56 @@
 "use strict";
-app.factory("AuthFactory", function($http, firebaseURL) {
-  let ref = new Firebase(firebaseURL);
+
+app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   let currentUserData = null;
 
-  return {
-    isAuthenticated () {
-      let authData = ref.getAuth();
-      return (authData) ? true : false;
-    },
-    getUser () {
-      return currentUserData;
-    },
-    authenticate (credentials) {
-      return new Promise((resolve, reject) => {
-        ref.authWithPassword({
-          "email": credentials.email,
-          "password": credentials.password
-        }, (error, authData) => {
-          if (error) {
-            reject(error);
-          } else {
-            // console.log("authWithPassword method completed successfully");
-            currentUserData = authData;
-            resolve(authData);
-          }
-        });
-      });
-    },    
-    storeUser (authData) {
-      let stringifiedUser = JSON.stringify({ uid: authData.uid });
-      return new Promise((resolve, reject) => {
-        $http
-          .post(`${firebaseURL}/users.json`, stringifiedUser)
-          .then(
-            res => resolve(res),
-            err => reject(err)
-          );
-      });
-    }
+  let isAuthenticated = () => {
+      return firebase.auth().currentUser ? true : false;
   };
+
+  let getUser = () => {
+    return firebase.auth().currentUser;
+  };
+
+  let logout = () => {
+    firebase.auth().signOut();
+  };
+
+  let authenticate = (credentials) => {
+    return $q((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+        .then((authData) =>{
+          resolve(authData);
+        })
+        .catch((error)=>{
+          reject(error);
+        });
+    });
+  };
+
+  let registerWithEmail = (user) => {
+    return $q((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+        .then((authData) =>{
+          resolve(authData);
+        })
+        .catch((error)=>{
+          reject(error);
+        });
+    });
+  };
+
+  // let authenticateGoogle = () => {
+  //   return $q((resolve, reject) => {
+  //     var provider = new firebase.auth.GoogleAuthProvider();
+  //     firebase.auth().signInWithPopup(provider)
+  //       .then((authData) => {
+  //         currentUserData = authData.user;
+  //         resolve(currentUserData);
+  //       }).catch((error)=> {
+  //         reject(error);
+  //       });
+  //   });
+  // };
+
+  return {isAuthenticated:isAuthenticated, getUser:getUser, logout:logout, registerWithEmail:registerWithEmail, authenticate:authenticate};
 });

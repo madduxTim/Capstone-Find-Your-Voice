@@ -3,3 +3,4 @@ lib/node_modules
 lib/bower_components
 jspm_packages
 lib/.sublime-gulp.cache
+app/AppConstants.js
