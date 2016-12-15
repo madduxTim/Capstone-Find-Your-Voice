@@ -9,7 +9,7 @@ app.factory("searchFactory", function($q, $http, $document, OPENSTATES_API){
         let keywordCallArray = [];
         let searchTerms = $document.find("#allBillsAPICall").val();
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A109&apikey=${OPENSTATES_API.apikey}`)     
+            $http.get(`http://openstates.org/api/v1//bills/?q=${searchTerms}&state=tn&search_window=session%3A110&apikey=${OPENSTATES_API.apikey}`)     
                 .success(function(queryData){
                     let preKeyData = queryData;
                     Object.keys(preKeyData).forEach(function(key){
@@ -34,7 +34,7 @@ app.factory("searchFactory", function($q, $http, $document, OPENSTATES_API){
     let billDetailAPI = function(bill) {
         let singleBillStorage = [];
         return $q(function(resolve, reject){
-            $http.get(`http://openstates.org/api/v1/bills/tn/109/${bill}/?apikey=${OPENSTATES_API.apikey}`)     
+            $http.get(`http://openstates.org/api/v1/bills/tn/110/${bill}/?apikey=${OPENSTATES_API.apikey}`)     
                 .success(function(queryData){
                     resolve(queryData);
                 })
